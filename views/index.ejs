@@ -1,0 +1,50 @@
+<% include partials/header %>
+
+<header class="masthead" style="background-image:url('/img/index_bg.png')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Welcome to my Blog</h1>
+                    <span class="subheading">A blog to test my REST skills</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <h1 class="my-4">Welcome to my blog</h1>
+            <a href="/blogs/new">
+                <button class="btn btn-lg btn-primary btn-block my-5" >Add a new blog Post</button>
+            </a>
+            <div class="post-preview">
+                <% blogs.forEach(function(blog){ %>
+                <a href="/blogs/<%=blog._id%>">
+                    <h2 class="post-title"><%=blog.title%></h2>
+                    <h3 class="post-subtitle"><%=blog.post%></h3>
+                    <p class="post-meta">Posted by: <%=blog.author%> on <%=blog.date%></p>
+                </a>
+                <a href="/blogs/<%=blog._id%>/edit" style="display: inline-block">
+                    <button class="btn btn-primary btn-large" >Edit Post</button>
+                </a>
+                <form action="/blogs/<%=blog._id%>?_method=DELETE" method="POST" id="delete" style="display: inline-block">
+                    <button class="btn btn-primary btn-large" >Delete Post</button>
+                </form>
+                
+                <% }); %>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<% include partials/footer %>
+
+            
+            
+            
